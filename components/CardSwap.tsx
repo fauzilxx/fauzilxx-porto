@@ -97,7 +97,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
         };
 
   const childArr = useMemo(() => Children.toArray(children) as ReactElement<CardProps>[], [children]);
-  const refs = useMemo<CardRef[]>(() => childArr.map(() => React.createRef<HTMLDivElement>()), [childArr.length]);
+  const refs = useMemo<CardRef[]>(() => childArr.map(() => React.createRef<HTMLDivElement>()), [childArr]);
 
   const order = useRef<number[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -223,8 +223,10 @@ const CardSwap: React.FC<CardSwapProps> = ({
       }
     }
     return () => clearInterval(intervalRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, refs]);
 
+  // eslint-disable-next-line react-hooks/refs
   const rendered = childArr.map((child, i) =>
     isValidElement<CardProps>(child)
       ? cloneElement(child, {

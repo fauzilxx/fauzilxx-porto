@@ -349,6 +349,7 @@ const WarpText = ({
   ]);
 
   useEffect(() => {
+    /* eslint-disable prefer-const */
     const container = containerRef.current;
     if (!container || typeof window === 'undefined') return undefined;
 

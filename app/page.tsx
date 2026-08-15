@@ -357,7 +357,7 @@ export default function Home() {
             <div
               className="custom-terminal-scroll"
               style={{
-                maxHeight: '340px',
+                maxHeight: '430px',
                 overflowY: 'auto',
                 padding: '22px 26px',
                 fontFamily: "'Fira Code', Consolas, Monaco, monospace",
