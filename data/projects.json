@@ -1,0 +1,53 @@
+[
+  {
+    "id": "apex-analytics",
+    "title": "Apex Analytics Suite",
+    "category": "Featured Project",
+    "description": "Real-time telemetry and data visualization platform with AI-assisted insights and sub-second metrics processing.",
+    "imagePreviewLabel": "Analytics Dashboard Preview",
+    "imagePreviewIcon": "analytics",
+    "techStack": [
+      "Next.js 15",
+      "TypeScript",
+      "TailwindCSS",
+      "Prisma",
+      "Recharts"
+    ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": "lumina-commerce",
+    "title": "Lumina Luxury Commerce",
+    "category": "E-Commerce",
+    "description": "Ultra-fast headless luxury shopping experience with interactive 3D product previews and instant checkout.",
+    "imagePreviewLabel": "E-Commerce Storefront Preview",
+    "imagePreviewIcon": "ecommerce",
+    "techStack": [
+      "React 19",
+      "Next.js",
+      "Stripe API",
+      "Three.js",
+      "Zustand"
+    ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  },
+  {
+    "id": "neuralcode-studio",
+    "title": "NeuralCode Studio",
+    "category": "AI Platform",
+    "description": "Intelligent developer workspace with contextual AI pair-programming and real-time code snippet generation.",
+    "imagePreviewLabel": "AI Studio Editor Preview",
+    "imagePreviewIcon": "ai",
+    "techStack": [
+      "TypeScript",
+      "OpenAI API",
+      "Monaco Editor",
+      "GSAP",
+      "WebGL"
+    ],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  }
+]
