@@ -130,6 +130,7 @@ export default function Home() {
       {/* ======================= FOLD 1: HERO / ABOUT VIEW ======================= */}
       <section
         id="about"
+        className="section-hero"
         style={{
           position: 'relative',
           zIndex: 10,
@@ -142,7 +143,7 @@ export default function Home() {
         }}
       >
         {/* Left Side: WarpText + Bio Terminal Frame (Single Line Equal Width Box Alignment) */}
-        <div style={{ width: '56%', maxWidth: '880px', display: 'flex', flexDirection: 'column', alignItems: 'stretch', marginTop: '0px' }}>
+        <div className="hero-left" style={{ width: '56%', maxWidth: '880px', display: 'flex', flexDirection: 'column', alignItems: 'stretch', marginTop: '0px' }}>
           {/* Interactive WebGL WarpText (Single Line Large Header) */}
           <div style={{ width: '100%', marginTop: '0rem' }}>
             <WarpText
@@ -248,7 +249,7 @@ export default function Home() {
         </div>
 
         {/* Right Side: Glassmorphic Portrait Photo Frame */}
-        <div style={{ width: '41%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', alignSelf: 'center', paddingTop: '20px' }}>
+        <div className="hero-right" style={{ width: '41%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', alignSelf: 'center', paddingTop: '20px' }}>
           <div
             style={{
               position: 'relative',
@@ -298,6 +299,7 @@ export default function Home() {
       {/* ======================= FOLD 2: PROJECTS SECTION (CARD SWAP) ======================= */}
       <section
         id="projects"
+        className="section-projects"
         style={{
           position: 'relative',
           zIndex: 10,
@@ -310,7 +312,7 @@ export default function Home() {
         }}
       >
         {/* Left Side: Work Experience Title + Linux Command Terminal Frame */}
-        <div style={{ width: '48%', maxWidth: '580px', display: 'flex', flexDirection: 'column', alignItems: 'stretch', marginTop: '15px' }}>
+        <div className="projects-left" style={{ width: '48%', maxWidth: '580px', display: 'flex', flexDirection: 'column', alignItems: 'stretch', marginTop: '15px' }}>
           {/* Section Title with WarpText */}
           <div style={{ width: '100%', marginBottom: '0.8rem' }}>
             <WarpText
@@ -435,7 +437,7 @@ export default function Home() {
         </div>
 
         {/* Right Side: CardSwap 3D Stack */}
-        <div style={{ position: 'relative', width: '710px', height: '610px' }}>
+        <div className="projects-right" style={{ position: 'relative', width: '710px', height: '610px' }}>
           <CardSwap
             width={660}
             height={550}
