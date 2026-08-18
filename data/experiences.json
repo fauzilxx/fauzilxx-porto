@@ -1,34 +1,34 @@
 [
   {
-    "id": "fullstack-dev",
-    "role": "Full-Stack Web Developer",
-    "period": "2023 — PRESENT",
-    "company": "Freelance & Custom Engineering",
-    "description": "Designing and building high-performance web applications, interactive 3D/WebGL experiences, and scalable cloud architectures.",
+    "id": "staff-bem",
+    "role": "Staff of Technology Department",
+    "period": "2026 — PRESENT",
+    "company": "BEM FATISDA UNS",
+    "description": "Developed and maintained the official organization profile website and digital information infrastructure for BEM FATISDA UNS.",
     "isCurrent": true
   },
   {
-    "id": "frontend-dev",
-    "role": "Frontend Developer & UI Engineer",
-    "period": "2021 — 2023",
-    "company": "Digital Systems & Web Apps",
-    "description": "Created modern, responsive user interfaces, reusable component libraries, and optimized web applications.",
+    "id": "teaching-assistant",
+    "role": "Teaching Assistant",
+    "period": "2025 — 2026",
+    "company": "Informatics, Sebelas Maret University",
+    "description": "Instructed and mentored undergraduate students in Programming Concepts and Data Structures & Algorithms practical lab sessions over 2 academic semesters.",
     "isCurrent": false
   },
   {
-    "id": "junior-engineer",
-    "role": "Junior Software Engineer",
-    "period": "2020 — 2021",
-    "company": "Apex Code Labs",
-    "description": "Developed REST APIs, integrated database schemas, and optimized client dashboard rendering speed.",
+    "id": "staff-techno",
+    "role": "Technology Staff of P!NGFEST 2026",
+    "period": "2026",
+    "company": "Informatics, Sebelas Maret University",
+    "description": "Responsible for developing, deploying, and maintaining the P!NGFEST 2026 web platform and digital event services.",
     "isCurrent": false
   },
   {
-    "id": "web-intern",
+    "id": "internship",
     "role": "Web Development Intern",
-    "period": "2019 — 2020",
-    "company": "Creative Digital Studio",
-    "description": "Assisted in building responsive landing pages, cross-browser CSS layouts, and client website migrations.",
+    "period": "2026",
+    "company": "Study First",
+    "description": "Responsible for developing, deploying, and maintaining production web applications and server infrastructure powering the Study First platform.",
     "isCurrent": false
   }
 ]

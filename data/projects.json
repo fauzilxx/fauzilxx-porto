@@ -1,53 +1,84 @@
 [
   {
-    "id": "apex-analytics",
-    "title": "Apex Analytics Suite",
-    "category": "Featured Project",
-    "description": "Real-time telemetry and data visualization platform with AI-assisted insights and sub-second metrics processing.",
-    "imagePreviewLabel": "Analytics Dashboard Preview",
+    "id": "AltiGuide",
+    "title": "AltiGuide",
+    "category": "college project",
+    "description": "An integrated mountain navigation & online registration platform featuring real-time SIMAKSI booking, offline GPX route tracking, and interactive exploration.",
+    "image": "/altiguide.png",
+    "imagePreviewLabel": "AltiGuide Preview",
     "imagePreviewIcon": "analytics",
     "techStack": [
-      "Next.js 15",
+      "Laravel",
+      "Vue",
+      "TailwindCSS",
+      "Inertia.js",
+      "Kotlin - Android"
+    ],
+    "githubUrl": "https://github.com/AltiGuide/AltiGuide"
+  },
+  {
+    "id": "Java Projects",
+    "title": "Java Hospital Management Projects",
+    "category": "college project",
+    "description": "A comprehensive Java-based hospital management system featuring patient records, appointment scheduling, billing, and inventory management.",
+    "image": "/java_project.png",
+    "imagePreviewLabel": "Java Projects Preview",
+    "imagePreviewIcon": "analytics",
+    "techStack": [
+      "Java",
+      "MYSQL"
+    ],
+    "githubUrl": "https://github.com/fauzilxx/Project-OOP-with-Java"
+  },
+  {
+    "id": "studyfirst",
+    "title": "StudyFirst",
+    "category": "Internship",
+    "description": "Company website created with a modern and interactive design system using WordPress, Laravel, Inertia.js, React, TailwindCSS.",
+    "image": "/studyfirst.png",
+    "imagePreviewLabel": "StudyFirst Preview",
+    "imagePreviewIcon": "",
+    "techStack": [
+      "WordPress",
+      "Laravel",
+      "Inertia.js",
+      "React",
+      "TailwindCSS"
+    ],
+    "githubUrl": "https://github.com/studyfirstindonesia/studyfirst-website",
+    "liveUrl": "https://studyfirstindonesia.com"
+  },
+  {
+    "id": "pingfest-2026",
+    "title": "Pingfest 2026",
+    "category": "College Event",
+    "isOngoing": true,
+    "description": "Official website for PINGFEST 2026 — National IT Festival & Competition hosted by FATISDA UNS. Features event registration, competition showcases, and participant portal.",
+    "imagePreviewLabel": "Pingfest 2026 Preview (Ongoing)",
+    "imagePreviewIcon": "analytics",
+    "techStack": [
+      "Next.js",
       "TypeScript",
       "TailwindCSS",
-      "Prisma",
-      "Recharts"
+      "Node.js",
+      "Rust"
     ],
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/fauzilxx"
   },
   {
-    "id": "lumina-commerce",
-    "title": "Lumina Luxury Commerce",
-    "category": "E-Commerce",
-    "description": "Ultra-fast headless luxury shopping experience with interactive 3D product previews and instant checkout.",
-    "imagePreviewLabel": "E-Commerce Storefront Preview",
-    "imagePreviewIcon": "ecommerce",
+    "id": "bem-fatisda-2026",
+    "title": "BEM FATISDA UNS 2026",
+    "category": "Organization",
+    "isOngoing": true,
+    "description": "Official organizational web platform for BEM FATISDA UNS 2026. Centralized hub for student advocacy, information services, executive work programs, and event updates.",
+    "imagePreviewLabel": "BEM FATISDA UNS 2026 Preview (Ongoing)",
+    "imagePreviewIcon": "analytics",
     "techStack": [
-      "React 19",
-      "Next.js",
-      "Stripe API",
-      "Three.js",
-      "Zustand"
-    ],
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
-  },
-  {
-    "id": "neuralcode-studio",
-    "title": "NeuralCode Studio",
-    "category": "AI Platform",
-    "description": "Intelligent developer workspace with contextual AI pair-programming and real-time code snippet generation.",
-    "imagePreviewLabel": "AI Studio Editor Preview",
-    "imagePreviewIcon": "ai",
-    "techStack": [
+      "Vue.js",
       "TypeScript",
-      "OpenAI API",
-      "Monaco Editor",
-      "GSAP",
-      "WebGL"
+      "TailwindCSS",
+      "Sanity"
     ],
-    "githubUrl": "https://github.com",
-    "liveUrl": "https://example.com"
+    "githubUrl": "https://github.com/fauzilxx"
   }
 ]
