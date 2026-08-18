@@ -8,6 +8,14 @@
     "isCurrent": true
   },
   {
+    "id": "sui-surakarta-hackathon",
+    "role": "1st Place Winner — Mini Hackathon",
+    "period": "2025",
+    "company": "Sui Indonesia Workshop Surakarta",
+    "description": "Awarded 1st place in the mini hackathon at Sui Indonesia Workshop Surakarta for building an innovative decentralized application on the Sui blockchain.",
+    "isCurrent": false
+  },
+  {
     "id": "teaching-assistant",
     "role": "Teaching Assistant",
     "period": "2025 — 2026",
