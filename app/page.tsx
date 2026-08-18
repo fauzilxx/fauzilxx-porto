@@ -115,6 +115,8 @@ export default function Home() {
 
       {/* Navigation Layer */}
       <PillNav
+        logo="/pas_foto.png"
+        logoAlt="Fauzil Azhim Profile"
         items={navItems}
         activeHref={activeSection}
         ease="power2.easeOut"
@@ -276,6 +278,7 @@ export default function Home() {
                 boxShadow: 'inset 0 0 30px rgba(0, 0, 0, 0.5)'
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/pas_foto.png"
                 alt="Fauzil Azhim Profile"
@@ -470,6 +473,7 @@ export default function Home() {
                   {/* Project Image Frame */}
                   <div className="card-image-frame">
                     {project.image ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
                       <img src={project.image} alt={project.title} />
                     ) : (
                       <div className="card-image-preview">

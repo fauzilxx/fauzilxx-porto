@@ -276,6 +276,7 @@ const PillNav: React.FC<PillNavProps> = ({
                 logoRef.current = el;
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={logo} alt={logoAlt} ref={logoImgRef} />
             </Link>
           ) : (
@@ -289,6 +290,7 @@ const PillNav: React.FC<PillNavProps> = ({
                 logoRef.current = el;
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={logo} alt={logoAlt} ref={logoImgRef} />
             </a>
           ))}
