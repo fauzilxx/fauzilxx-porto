@@ -54,6 +54,7 @@
     "category": "College Event",
     "isOngoing": true,
     "description": "Official website for PINGFEST 2026 — National IT Festival & Competition hosted by FATISDA UNS. Features event registration, competition showcases, and participant portal.",
+    "image": "/pingfest.png",
     "imagePreviewLabel": "Pingfest 2026 Preview (Ongoing)",
     "imagePreviewIcon": "analytics",
     "techStack": [
@@ -63,7 +64,7 @@
       "Node.js",
       "Rust"
     ],
-    "githubUrl": "https://github.com/fauzilxx"
+    "githubUrl": "https://pingfest.id/"
   },
   {
     "id": "bem-fatisda-2026",
@@ -80,5 +81,20 @@
       "Sanity"
     ],
     "githubUrl": "https://github.com/fauzilxx"
+  },
+  {
+    "id": "modalin",
+    "title": "Modalin",
+    "category": "Competition Project",
+    "description": "ModalIn is a web-based stock market simulation application designed to bridge the gap between theoretical financial knowledge and practical trading experience without real financial risk. Users can practice buying and selling various stocks using virtual currency, analyze market trends, and compete with others in real-time simulations.",
+    "image": "/modalin.png",
+    "imagePreviewLabel": "Modalin Preview",
+    "imagePreviewIcon": "",
+    "techStack": [
+      "Go",
+      "Vue",
+      "PostgreSQL"
+    ],
+    "githubUrl": "https://github.com/KevinAnandaP/modalin-be"
   }
 ]
