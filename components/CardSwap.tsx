@@ -10,7 +10,8 @@ import React, {
   type RefObject,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  useState
 } from 'react';
 import gsap from 'gsap';
 import './CardSwap.css';
@@ -66,17 +67,45 @@ const placeNow = (el: HTMLElement, slot: Slot, skew: number) =>
   });
 
 const CardSwap: React.FC<CardSwapProps> = ({
-  width = 500,
-  height = 400,
-  cardDistance = 60,
-  verticalDistance = 70,
+  width = 660,
+  height = 550,
+  cardDistance = 75,
+  verticalDistance = 75,
   delay = 5000,
   pauseOnHover = false,
   onCardClick,
-  skewAmount = 6,
+  skewAmount = 4,
   easing = 'elastic',
   children
 }) => {
+  const getInitialMode = (): 'desktop' | 'tablet' | 'mobile' => {
+    if (typeof window === 'undefined') return 'desktop';
+    const w = window.innerWidth;
+    if (w <= 650) return 'mobile';
+    if (w <= 1024) return 'tablet';
+    return 'desktop';
+  };
+
+  const [screenMode, setScreenMode] = useState<'desktop' | 'tablet' | 'mobile'>(getInitialMode);
+  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setWindowWidth(w);
+      if (w <= 650) {
+        setScreenMode('mobile');
+      } else if (w <= 1024) {
+        setScreenMode('tablet');
+      } else {
+        setScreenMode('desktop');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const config =
     easing === 'elastic'
       ? {
@@ -98,6 +127,54 @@ const CardSwap: React.FC<CardSwapProps> = ({
 
   const childArr = useMemo(() => Children.toArray(children) as ReactElement<CardProps>[], [children]);
   const refs = useMemo<CardRef[]>(() => childArr.map(() => React.createRef<HTMLDivElement>()), [childArr]);
+  const totalCards = childArr.length;
+
+  const responsiveConfig = useMemo(() => {
+    if (screenMode === 'mobile') {
+      const cardDist = 10;
+      const vertDist = 16;
+      const totalSpreadX = (totalCards - 1) * cardDist;
+      const maxAvailableWidth = Math.max(280, windowWidth - 36);
+      const cardW = Math.max(270, Math.min(310, maxAvailableWidth - totalSpreadX));
+      const cardH = 430;
+
+      return {
+        width: cardW,
+        height: cardH,
+        cardDistance: cardDist,
+        verticalDistance: vertDist,
+        skewAmount: 2,
+        dropDistance: 310,
+        centerOffsetX: -totalSpreadX / 2,
+        centerOffsetY: ((totalCards - 1) * vertDist) / 2
+      };
+    } else if (screenMode === 'tablet') {
+      const cardDist = 30;
+      const vertDist = 38;
+      const totalSpreadX = (totalCards - 1) * cardDist;
+      return {
+        width: 500,
+        height: 450,
+        cardDistance: cardDist,
+        verticalDistance: vertDist,
+        skewAmount: 3,
+        dropDistance: 380,
+        centerOffsetX: -totalSpreadX / 2,
+        centerOffsetY: ((totalCards - 1) * vertDist) / 2
+      };
+    } else {
+      return {
+        width: typeof width === 'number' ? width : 660,
+        height: typeof height === 'number' ? height : 550,
+        cardDistance: typeof cardDistance === 'number' ? cardDistance : 75,
+        verticalDistance: typeof verticalDistance === 'number' ? verticalDistance : 75,
+        skewAmount: typeof skewAmount === 'number' ? skewAmount : 4,
+        dropDistance: 450,
+        centerOffsetX: 0,
+        centerOffsetY: 0
+      };
+    }
+  }, [screenMode, windowWidth, totalCards, width, height, cardDistance, verticalDistance, skewAmount]);
 
   const order = useRef<number[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -109,9 +186,11 @@ const CardSwap: React.FC<CardSwapProps> = ({
     const total = refs.length;
     order.current = Array.from({ length: total }, (_, i) => i);
 
+    const { cardDistance: distC, verticalDistance: distV, skewAmount: skew, dropDistance: dropDist } = responsiveConfig;
+
     refs.forEach((r, i) => {
       if (r.current) {
-        placeNow(r.current, makeSlot(i, cardDistance, verticalDistance, total), skewAmount);
+        placeNow(r.current, makeSlot(i, distC, distV, total), skew);
       }
     });
 
@@ -135,19 +214,19 @@ const CardSwap: React.FC<CardSwapProps> = ({
       rest.forEach((idx, i) => {
         const el = refs[idx]?.current;
         if (el) {
-          const prevSlot = makeSlot(i + 1, cardDistance, verticalDistance, total);
-          placeNow(el, prevSlot, skewAmount);
+          const prevSlot = makeSlot(i + 1, distC, distV, total);
+          placeNow(el, prevSlot, skew);
         }
       });
-      const currentFrontSlot = makeSlot(0, cardDistance, verticalDistance, total);
-      placeNow(elFront, currentFrontSlot, skewAmount);
+      const currentFrontSlot = makeSlot(0, distC, distV, total);
+      placeNow(elFront, currentFrontSlot, skew);
 
       const tl = gsap.timeline();
       tlRef.current = tl;
 
       // Drop front card down
       tl.to(elFront, {
-        y: '+=450',
+        y: `+=${dropDist}`,
         duration: config.durDrop,
         ease: config.ease
       });
@@ -157,7 +236,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       rest.forEach((idx, i) => {
         const el = refs[idx]?.current;
         if (!el) return;
-        const slot = makeSlot(i, cardDistance, verticalDistance, total);
+        const slot = makeSlot(i, distC, distV, total);
         tl.set(el, { zIndex: slot.zIndex }, 'promote');
         tl.to(
           el,
@@ -173,7 +252,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       });
 
       // Return dropped front card to back slot
-      const backSlot = makeSlot(total - 1, cardDistance, verticalDistance, total);
+      const backSlot = makeSlot(total - 1, distC, distV, total);
       tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
       tl.call(
         () => {
@@ -224,7 +303,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
     }
     return () => clearInterval(intervalRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, refs]);
+  }, [responsiveConfig, delay, pauseOnHover, easing, refs]);
 
   // eslint-disable-next-line react-hooks/refs
   const rendered = childArr.map((child, i) =>
@@ -232,7 +311,11 @@ const CardSwap: React.FC<CardSwapProps> = ({
       ? cloneElement(child, {
           key: i,
           ref: refs[i],
-          style: { width, height, ...(child.props.style ?? {}) },
+          style: {
+            width: responsiveConfig.width,
+            height: responsiveConfig.height,
+            ...(child.props.style ?? {})
+          },
           onClick: (e: React.MouseEvent<HTMLDivElement>) => {
             child.props.onClick?.(e);
             const target = e.target as HTMLElement;
@@ -248,7 +331,21 @@ const CardSwap: React.FC<CardSwapProps> = ({
   );
 
   return (
-    <div ref={container} className="card-swap-container" style={{ width, height }}>
+    <div
+      ref={container}
+      className={`card-swap-container ${screenMode !== 'desktop' ? 'card-swap-responsive' : ''}`}
+      style={{
+        width: responsiveConfig.width,
+        height: responsiveConfig.height,
+        ...(screenMode !== 'desktop'
+          ? {
+              left: '50%',
+              top: '50%',
+              transform: `translate(calc(-50% + ${responsiveConfig.centerOffsetX}px), calc(-50% + ${responsiveConfig.centerOffsetY}px))`
+            }
+          : {})
+      }}
+    >
       {rendered}
     </div>
   );
